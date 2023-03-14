@@ -23,5 +23,4 @@ export default class IsUgly implements ISolution {
     solve() {
         console.log(this.isUgly(18));
     };
-
 }

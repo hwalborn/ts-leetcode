@@ -1,0 +1,7 @@
+import { ISolution } from "../../utils/ISolution";
+
+export default class UPDATE implements ISolution {
+    solve() {
+        console.log('howdy from the template');
+    };
+}
