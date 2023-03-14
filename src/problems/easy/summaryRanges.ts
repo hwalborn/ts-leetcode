@@ -17,6 +17,8 @@
  * either true? add to ranges
  */
 
+import { ISolution } from "../../utils/ISolution";
+
 export function summaryRanges(nums: number[]): string[] {
     if (!nums.length) {
         return [];
@@ -46,3 +48,9 @@ export function summaryRanges(nums: number[]): string[] {
     }
     return ranges;
 };
+
+export default class SummaryRanges implements ISolution {
+    solve() {
+        console.log(summaryRanges([0,1,2,4,5,7]))
+    }
+}
