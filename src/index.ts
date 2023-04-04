@@ -20,7 +20,7 @@ import path from 'path';
         return  fileBTime - fileATime;
     })?.shift();
 
-    const {default: ImportedClass } = await import(`./problems/easy/${latestFile}`);
+    const {default: ImportedClass } = await import(`./problems/${PROBLEM_LEVEL}/${latestFile}`);
     const solution = new ImportedClass();
     if ('solve' in solution) {
         new ImportedClass()?.solve();
