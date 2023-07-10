@@ -7,34 +7,31 @@ import { ISolution } from "../../utils/ISolution";
 
 export default class IntersectingArrays implements ISolution {
 
-    intersection(nums1: number[], nums2: number[]): number[] {
-        const nums1Intersects = nums1.length < nums2.length;
-        const shorterArr = nums1Intersects ? nums1 : nums2;
-        const longerArr = nums1Intersects ? nums2 : nums1;
-        const memo = shorterArr.reduce((mem: Record<number, boolean>, n) => {
-            mem[n] = true;
-            return mem;
-        }, {});
-        const intersections = longerArr.reduce((uniques: number[], n) => {
-            if (memo[n] && !uniques.includes(n)) {
-                uniques.push(n);
+    newIntersection(nums1: number[], nums2: number[]): number[] {
+        const intersecting: number[] = [];
+        let i = 0;
+        
+        while (i < nums1.length) {
+            let j = 0;
+            if (nums2.length <= 0) {
+                break;
             }
-            return uniques;
-        }, []);
-        return intersections;
-    }
-
-    areEqual(arr1: number[], arr2: number[]): boolean {
-        for(let j = 0; j < arr1.length; j++) {
-            if (arr2[j] !== arr1[j]) {
-                return false;
+            while ( j < nums2.length) {
+                if (nums1[i] === nums2[j]) {
+                    intersecting.push(...nums2.splice(j, 1));
+                    break;
+                }
+                j++;
             }
+            i++;
         }
-        return true;
+        return intersecting
     }
 
     solve() {
-        console.log(this.intersection([1, 2,2,1], [2,2]));
-        // console.log(this.intersection([4,9,5], [9,4,9,8,4]));
+        console.log(this.newIntersection([1,2,2,1], [2,2]));
+        console.log(this.newIntersection([4,9,5], [9,4,9,8,4]));
+        console.log(this.newIntersection([1,2,2,1], [1,2]));
+        console.log(this.newIntersection([2,1], [1,2]));
     }
 }
